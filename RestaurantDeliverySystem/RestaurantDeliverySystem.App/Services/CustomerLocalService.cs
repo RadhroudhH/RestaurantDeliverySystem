@@ -1,6 +1,6 @@
 ﻿using RestaurantDeliverySystem.DTOs.CustomerLocalDTOs;
 using RestaurantDeliverySystem.Entities;
-using RestaurantDeliverySystem.Repositories;
+using RestaurantDeliverySystem.App.Repositories;
 
 namespace RestaurantDeliverySystem.Services
 {
@@ -21,41 +21,33 @@ namespace RestaurantDeliverySystem.Services
                 .ToList();
         }
 
-        public GetCustomerLocalByIdResponse GetById(Guid id)
-        {
-            var entity = _repository.GetById(id);
-            if (entity == null) return null;
-
-            return new GetCustomerLocalByIdResponse(entity);
-        }
-
         public GetCustomerLocalByIdResponse Post(PostCustomerLocalRequest request)
         {
             var entity = new CustomerLocal
             {
-                Name = request.Name,
+                FullName = request.FullName,
                 Phone = request.Phone
             };
 
-            var created = _repository.Post(entity);
+            var created = _repository.Create(entity); // not Post
             return new GetCustomerLocalByIdResponse(created);
         }
 
-        public GetCustomerLocalByIdResponse Put(Guid id, PutCustomerLocalRequest request)
+        public GetCustomerLocalByIdResponse Put(int id, PutCustomerLocalRequest request)
         {
-            var entity = _repository.GetById(id);
+            var entity = _repository.GetById(id); // now matches int
             if (entity == null) return null;
 
-            entity.Name = request.Name;
+            entity.FullName = request.FullName;
             entity.Phone = request.Phone;
 
-            var updated = _repository.Put(id, entity);
-            return new GetCustomerLocalByIdResponse(updated);
+            _repository.Update(entity); // returns bool, ignore for response
+            return new GetCustomerLocalByIdResponse(entity);
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
-            _repository.Delete(id);
+            _repository.Delete(id); // matches repository
         }
     }
 }

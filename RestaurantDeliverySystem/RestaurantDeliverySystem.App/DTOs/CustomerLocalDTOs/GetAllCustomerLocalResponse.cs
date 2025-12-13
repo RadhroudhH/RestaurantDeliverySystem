@@ -1,10 +1,10 @@
 ﻿using RestaurantDeliverySystem.Entities;
 
-namespace RestaurantDeliverySystem.DTOs.CustomerDTOs
+namespace RestaurantDeliverySystem.DTOs.CustomerLocalDTOs
 {
-    public class GetCustomerLocalByIdResponse
+    public class GetAllCustomerLocalResponse
     {
-        public GetCustomerLocalByIdResponse(CustomerLocal customer)
+        public GetAllCustomerLocalResponse(CustomerLocal customer)
         {
             Id = customer.Id;
             FullName = customer.FullName;

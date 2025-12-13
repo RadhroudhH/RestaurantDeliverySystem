@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using RestaurantDeliverySystem.App.Entities;
+using RestaurantDeliverySystem.Entities;
 using RestaurantDeliverySystem.App.Repositories;
 
 namespace RestaurantDeliverySystem.App.Services

@@ -1,18 +1,18 @@
 ﻿using RestaurantDeliverySystem.Entities;
 
-namespace RestaurantDeliverySystem.DTOs.RestaurantDTOs
+namespace RestaurantDeliverySystem.DTOs.CustomerLocalDTOs
 {
-    public class GetRestaurantByIdResponse
+    public class GetCustomerLocalByIdResponse
     {
-        public GetRestaurantByIdResponse(Restaurant restaurant)
+        public GetCustomerLocalByIdResponse(CustomerLocal customer)
         {
-            Id = restaurant.Id;
-            Name = restaurant.Name;
-            Address = restaurant.Address;
+            Id = customer.Id;
+            FullName = customer.FullName;
+            TableNumber = customer.TableNumber;
         }
 
         public int Id { get; set; }
-        public string Name { get; set; } = "";
-        public string Address { get; set; } = "";
+        public string FullName { get; set; } = "";
+        public int TableNumber { get; set; }
     }
 }

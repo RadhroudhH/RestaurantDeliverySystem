@@ -1,6 +1,6 @@
 ﻿using RestaurantDeliverySystem.DTOs.CustomerDeliveryDTOs;
 using RestaurantDeliverySystem.Entities;
-using RestaurantDeliverySystem.Repositories;
+using RestaurantDeliverySystem.App.Repositories;
 
 namespace RestaurantDeliverySystem.Services
 {
@@ -21,11 +21,10 @@ namespace RestaurantDeliverySystem.Services
                 .ToList();
         }
 
-        public GetCustomerDeliveryByIdResponse GetById(Guid id)
+        public GetCustomerDeliveryByIdResponse GetById(int id)
         {
             var entity = _repository.GetById(id);
             if (entity == null) return null;
-
             return new GetCustomerDeliveryByIdResponse(entity);
         }
 
@@ -33,29 +32,29 @@ namespace RestaurantDeliverySystem.Services
         {
             var entity = new CustomerDelivery
             {
-                Name = request.Name,
+                FullName = request.FullName,
                 Phone = request.Phone,
                 Address = request.Address
             };
 
-            var created = _repository.Post(entity);
+            var created = _repository.Create(entity);
             return new GetCustomerDeliveryByIdResponse(created);
         }
 
-        public GetCustomerDeliveryByIdResponse Put(Guid id, PutCustomerDeliveryRequest request)
+        public GetCustomerDeliveryByIdResponse Put(int id, PutCustomerDeliveryRequest request)
         {
             var entity = _repository.GetById(id);
             if (entity == null) return null;
 
-            entity.Name = request.Name;
+            entity.FullName = request.FullName;
             entity.Phone = request.Phone;
             entity.Address = request.Address;
 
-            var updated = _repository.Put(id, entity);
-            return new GetCustomerDeliveryByIdResponse(updated);
+            _repository.Update(entity); // Update returns bool, not entity
+            return new GetCustomerDeliveryByIdResponse(entity);
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             _repository.Delete(id);
         }

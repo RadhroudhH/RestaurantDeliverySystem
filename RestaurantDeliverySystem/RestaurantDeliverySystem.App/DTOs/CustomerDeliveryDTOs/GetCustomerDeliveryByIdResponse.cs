@@ -2,14 +2,14 @@
 
 namespace RestaurantDeliverySystem.DTOs.CustomerDeliveryDTOs
 {
-    public class GetAllCustomerDeliveryResponse
+    public class GetCustomerDeliveryByIdResponse
     {
-        public GetAllCustomerDeliveryResponse(CustomerDelivery customer)
+        public GetCustomerDeliveryByIdResponse(CustomerDelivery customerDelivery)
         {
-            Id = customer.Id;
-            FullName = customer.FullName;
-            Address = customer.Address;
-            Phone = customer.Phone;
+            Id = customerDelivery.Id;
+            FullName = customerDelivery.FullName;
+            Address = customerDelivery.Address;
+            Phone = customerDelivery.Phone;
         }
 
         public int Id { get; set; }

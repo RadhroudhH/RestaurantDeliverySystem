@@ -1,4 +1,4 @@
-﻿namespace RestaurantDeliverySystem.DTOs.CustomerDTOs
+﻿namespace RestaurantDeliverySystem.DTOs.CustomerDeliveryDTOs
 {
     public class PostCustomerDeliveryRequest
     {

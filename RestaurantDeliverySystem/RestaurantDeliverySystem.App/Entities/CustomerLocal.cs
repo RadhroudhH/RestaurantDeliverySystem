@@ -3,5 +3,6 @@
     public class CustomerLocal : Customer
     {
         public int TableNumber { get; set; }
+        public string Phone { get; set; } = "";
     }
 }
